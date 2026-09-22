@@ -161,3 +161,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+.dark .bg-white { background-color: #0f172a !important; }
+.dark .bg-\[\#f7f9fc\] { background-color: #020617 !important; }
+.dark .bg-slate-50 { background-color: #111827 !important; }
+.dark .text-slate-900, .dark .text-slate-950, .dark .text-slate-800, .dark .text-slate-700 { color: #f8fafc !important; }
+.dark .text-slate-500, .dark .text-slate-400 { color: #94a3b8 !important; }
+.dark .border-slate-100, .dark .border-slate-200 { border-color: #1e293b !important; }
+.dark input, .dark textarea { color: #f8fafc; background-color: #0f172a; }
