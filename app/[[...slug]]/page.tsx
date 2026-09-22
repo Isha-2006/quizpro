@@ -21,9 +21,16 @@ const leaderboard = [
 ]
 
 function useLocalState<T>(key: string, initial: T) {
-  const [value, setValue] = useState<T>(initial)
-  useEffect(() => { try { const saved = localStorage.getItem(key); if (saved) setValue(JSON.parse(saved)) } catch {} }, [key])
-  useEffect(() => { try { localStorage.setItem(key, JSON.stringify(value)) } catch {} }, [key, value])
+  const [value, setValue] = useState<T>(() => {
+    if (typeof window === 'undefined') return initial
+    try {
+      const saved = localStorage.getItem(key)
+      return saved ? JSON.parse(saved) as T : initial
+    } catch { return initial }
+  })
+  useEffect(() => {
+    try { localStorage.setItem(key, JSON.stringify(value)) } catch {}
+  }, [key, value])
   return [value, setValue] as const
 }
 
